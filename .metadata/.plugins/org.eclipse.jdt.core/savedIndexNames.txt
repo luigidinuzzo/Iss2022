@@ -17,7 +17,6 @@ INDEX VERSION 1.131+/Users/luigidinuzzo/Desktop/issLab2022/.metadata/.plugins/or
 181423597.index
 4087742018.index
 1381725014.index
-2540607589.index
 3586839258.index
 85122377.index
 782565259.index

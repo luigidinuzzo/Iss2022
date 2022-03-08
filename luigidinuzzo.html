@@ -198,19 +198,22 @@ div.imagedesc{
 
 <div class="body"> 
 <h2>Introduction</h2>
+<p>Primo progetto</p>
  
  
 <h2>Requirements</h2>
-
- 
-<div class="remark">
-Copy here the EXACT text fiven by the customer.
-</div>
+<p>Si desidera costruire un'applicazione software capace di:</p>
+<p> (requisito radarGui) mostrare le distanze rilevate da un sensore Sonar "HC-SR04" connesso
+     a un RaspberryPi su un display (RadarDisplay) a forma di radar connesso a un PC.</p>
+<p>(requisito ledAlarm) accendere un Led se la distanza rilevata dal Sonar e' inferiore a un valore limite prefissato denominato DLIMIT.</p>
 
  
 
 <h2>Requirement analysis</h2>
- 
+ <p>Il Led deve accendersi se pongo un ostacolo a distanza d minore di DILIMT 
+     dal Sonar e deve spegnersi non appena porto l'ostacolo ad una distanza d maggiore di DILIMT.
+      In ogni caso posso vedere illuminarsi un punto sul RadarDisplay a distanza d dal centro lungo una retta che forma un angolo Alpha
+        rispetto all'asse orizzontale del display.</p>
 
 </div>
 
@@ -221,6 +224,9 @@ Copy here the EXACT text fiven by the customer.
 
 
 <h2>Project</h2> 
+<p>1) Collego sonar e led a Raspberry Pi.</p>
+<p>2) Collego Raspberry all'alimentazione, dopo aver precedentemente impostato la connessione al wi-fi.</p>
+<p>3) Una volta avviato il Raspberry, eseguo il file LedPython25.py per verificare il funzionamento del led. Successivamente eseguo il file sonar.py per controllare l'uso del sonar.</p>
  
 </div>
 
@@ -246,7 +252,9 @@ Copy here the EXACT text fiven by the customer.
 </div>  
 
 <div style="background-color:rgba(86, 56, 253, 0.9); width:60%;text-align:left;color:white">
-By Luigi di Nuzzo email: luigi.dinuzzo@studio.unibo.it  git: https://github.com/luigidinuzzo/Iss2022
+<p>By Luigi di Nuzzo</p>
+<p>email: luigi.dinuzzo@studio.unibo.it</p>
+<p>git: https://github.com/luigidinuzzo/iss2022</p>
 <img src="./img/luigi.jpeg" alt="mbot" width="15%" height="15%">
 </div> 
 </body>

@@ -198,15 +198,25 @@ div.imagedesc{
 
 <div class="body"> 
 <h2>Introduction</h2>
-<p>Primo progetto</p>
+<div class="remark">
+    Primo progetto
+</div>
  
  
 <h2>Requirements</h2>
-<p>Si desidera costruire un'applicazione software capace di:</p>
-<p> (requisito radarGui) mostrare le distanze rilevate da un sensore Sonar "HC-SR04" connesso
-     a un RaspberryPi su un display (RadarDisplay) a forma di radar connesso a un PC.</p>
-<p>(requisito ledAlarm) accendere un Led se la distanza rilevata dal Sonar e' inferiore a un valore limite prefissato denominato DLIMIT.</p>
-
+<div class="remark">
+ 
+    Si desidera costruire un'applicazione software capace di:
+    
+    <ul>
+    <li>(requisito <b>radarGui</b>) mostrare le distanze rilevate da un sensore Sonar <tt>HC-SR04</tt>
+     connesso a un RaspberryPi su un display (RadarDisplay) a forma di radar connesso a un PC.
+    
+    <center><img src="img/radarDisplay.png" width="10%"></img></center>
+    <li>(requisito <b>ledAlarm</b>) accendere un Led se la distanza rilevata dal Sonar 
+    e' inferiore a un valore limite prefissato denominato <tt>DLIMIT</tt>.
+    </li> 
+</div>
  
 
 <h2>Requirement analysis</h2>
@@ -222,10 +232,30 @@ div.imagedesc{
 
 <h2>Project</h2> 
 <h3>Fase preliminare (test dei componenti):</h3>
-<p>1) Collego sonar e led a Raspberry Pi.</p>
-<p>2) Collego Raspberry all'alimentazione, dopo aver precedentemente impostato la connessione al wi-fi.</p>
-<p>3) Una volta avviato il Raspberry, eseguo il file LedPython25.py per verificare il funzionamento del led. Successivamente eseguo il file sonar.py per controllare l'uso del sonar.</p>
- 
+<div class="remark">    
+    <ul>
+    <li>Collego sonar e led a Raspberry Pi.
+    <li>Collego Raspberry all'alimentazione, dopo aver precedentemente impostato la connessione al wi-fi.
+    <li>Una volta avviato il Raspberry, eseguo i file Bash, C o Python.
+        <ul><li>
+            Bash: <a class="reference internal" href="./it.unibo.raspIntro2022/code/bash/led25OnOff.sh"><span class="std std-ref">led25OnOff.sh</span></a>, 
+            <a class="reference internal" href="./it.unibo.raspIntro2022/code/bash/led25Gpio.sh"><span class="std std-ref">led25Gpio.sh</span></a>,
+            <a class="reference internal" href="./it.unibo.raspIntro2022/code/bash/led25GpioTurnOn.sh"><span class="std std-ref">led25GpioTurnOn.sh</span></a>,
+            <a class="reference internal" href="./it.unibo.raspIntro2022/code/bash/led25GpioTurnOff.sh"><span class="std std-ref">led25GpioTurnOff.sh</span></a>
+        </li></ul>
+        <ul><li>
+            C: <a class="reference internal" href="./it.unibo.raspIntro2022/code/c/LedSonar.c"><span class="std std-ref">LedSonar.c</span></a>, 
+            <a class="reference internal" href="./it.unibo.raspIntro2022/code/c/LedBlinkSonar.c"><span class="std std-ref">LedBlinkSonar.c</span></a>,
+            <a class="reference internal" href="./it.unibo.raspIntro2022/code/c/OtherSonar.c"><span class="std std-ref">OtherSonar.c</span></a>,
+            <a class="reference internal" href="./it.unibo.raspIntro2022/code/c/SonarAlone.c"><span class="std std-ref">SonarAlone.c</span></a>
+        </li></ul>
+        <ul><li>
+            Python: <a class="reference internal" href="./it.unibo.raspIntro2022/code/python/ledCmdEmitter.py"><span class="std std-ref">ledCmdEmitter.py</span></a>, 
+            <a class="reference internal" href="./it.unibo.raspIntro2022/code/python/ledPython25.py"><span class="std std-ref">ledPython25.py</span></a>,
+            <a class="reference internal" href="./it.unibo.raspIntro2022/code/python/sonar.py"><span class="std std-ref">sonar.py</span></a>
+        </li></ul>
+        </li> 
+    </div>
 </div>
 
 <h2>Testing</h2> 
@@ -251,9 +281,9 @@ div.imagedesc{
 
 <div style="background-color:rgba(86, 56, 253, 0.9); width:60%;text-align:left;color:white">
 <p>By Luigi di Nuzzo</p>
-<p>email: luigi.dinuzzo@studio.unibo.it</p>
-<p>git: https://github.com/luigidinuzzo/iss2022</p>
-<img src="./img/luigi.jpeg" alt="mbot" width="15%" height="15%">
+<p>Email: luigi.dinuzzo@studio.unibo.it</p>
+<p>GitHub:  <a style="color:white" class="reference internal" href="https://github.com/luigidinuzzo/iss2022"><span class="std std-ref">https://github.com/luigidinuzzo/iss2022</span></a></p>
+<center><img src="./img/luigi.jpeg" alt="mbot" width="30%" height="30%"></center>
 </div> 
 </body>
 </html>

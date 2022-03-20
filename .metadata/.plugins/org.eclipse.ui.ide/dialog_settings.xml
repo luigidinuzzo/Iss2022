@@ -7,9 +7,9 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/Users/luigidinuzzo/Desktop/issLab2022/it.unibo.radarSystem22"/>
 			<item value="/Users/luigidinuzzo/Desktop/issLab2022/it.unibo.comm2022"/>
 			<item value="/Users/luigidinuzzo/Desktop/issLab2022/it.unibo.radarSystem22.domain"/>
-			<item value="/Users/luigidinuzzo/Desktop/issLab2022/it.unibo.radarSystem22"/>
 			<item value="/Users/luigidinuzzo/Desktop/issLab2022/progetto"/>
 			<item value="/Users/luigidinuzzo/Desktop/Università/Laurea Magistrale/Primo anno/Ingegneria dei Sistemi Software M/issLab2022/it.unibo.java.radar"/>
 		</list>

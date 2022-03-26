@@ -1,9 +1,7 @@
 package it.unibo.comm2022.tcp;
 
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-
 import it.unibo.comm2022.interfaces.IApplMsgHandler;
 import it.unibo.comm2022.interfaces.Interaction2021;
 import it.unibo.comm2022.utils.ColorsOut;
@@ -14,16 +12,6 @@ private ServerSocket serversock;
 protected IApplMsgHandler userDefHandler;
 protected String name;
 protected boolean stopped = true;
-
-
-/*
- * Occorre:
- *	permettere di stabilire connenessioni con più client;
- *	fare in modo che si stabilisca una diversa connessione con ciascun client;
- *	fare in modo che i messaggi ricevuti su una specifica connessione siano elaborati da opportuno codice applicativo.
- * Il TCPServer non deve includere codice applicativo, ma USARLO.
-*/
-
 
  	public TcpServer( String name, int port,  IApplMsgHandler userDefHandler   ) {
 		super(name);

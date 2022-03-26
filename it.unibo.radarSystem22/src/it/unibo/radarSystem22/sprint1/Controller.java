@@ -1,15 +1,12 @@
 package it.unibo.radarSystem22.sprint1;
 
-import it.unibo.radarSystem22.domain.DeviceFactory;
-import it.unibo.radarSystem22.domain.interfaces.IDistance;
-import it.unibo.radarSystem22.domain.interfaces.ILed;
-import it.unibo.radarSystem22.domain.interfaces.IRadarDisplay;
-import it.unibo.radarSystem22.domain.interfaces.ISonar;
+import it.unibo.radarSystem22.domain.interfaces.*;
 import it.unibo.radarSystem22.domain.utils.BasicUtils;
 import it.unibo.radarSystem22.domain.utils.ColorsOut;
 import it.unibo.radarSystem22.domain.utils.DomainSystemConfig;
 import it.unibo.radarSystem22.sprint1.usecases.LedAlarmUsecase;
 import it.unibo.radarSystem22.sprint1.usecases.RadarGuiUsecase;
+import it.unibo.radarSystem22.domain.DeviceFactory;
 
 public class Controller {
 private ILed led;
@@ -44,8 +41,8 @@ private ActionFunction endFun;
 	protected void activate( int limit ) {
  		new Thread() {
 			public void run() { 
-				BasicUtils.aboutThreads("Controller activated | ");
 				try {
+					BasicUtils.aboutThreads("Controller activate | ");
   					boolean sonarActive = sonar.isActive();
 					if( sonarActive ) {
 						for( int i=1; i<=limit; i++) {
@@ -57,7 +54,7 @@ private ActionFunction endFun;
 	 						BasicUtils.delay(DomainSystemConfig.sonarDelay);  //Al ritmo della generazione ...
 	 					}
 					}				
-					//ColorsOut.outappl("Controller | BYE", ColorsOut.BLUE  );
+					//ColorsOut.outappl("Controller | BYE", ColorsOut.BLUE  );					 
 					sonar.deactivate();
 					endFun.run("Controller | BYE ");
 					//System.exit(0);

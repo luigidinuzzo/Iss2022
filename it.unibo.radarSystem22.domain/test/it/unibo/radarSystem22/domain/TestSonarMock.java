@@ -1,7 +1,6 @@
 package it.unibo.radarSystem22.domain;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertTrue;
+import org.junit.*;
 
 import it.unibo.radarSystem22.domain.interfaces.ISonar;
 import it.unibo.radarSystem22.domain.utils.BasicUtils;

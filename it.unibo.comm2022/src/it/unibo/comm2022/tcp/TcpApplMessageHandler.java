@@ -6,7 +6,6 @@ import it.unibo.comm2022.utils.ColorsOut;
 
 /*
  * Ente attivo per la ricezione di messaggi su una connessione Interaction2021
- * è un handler che, passandogli userdefinehandler, gestirà tutti i messaggi
  */
 public class TcpApplMessageHandler extends Thread{
 private  IApplMsgHandler handler ;

@@ -1,7 +1,6 @@
 package it.unibo.radarSystem22_4.appl.main;
 
-import it.unibo.radarSystem22.domain.interfaces.*;
-import it.unibo.radarSystem22.domain.utils.DomainSystemConfig;
+import it.unibo.radarSystem22.domain.interfaces.ISonar;
 import it.unibo.radarSystem22_4.appl.RadarSystemConfig;
 import it.unibo.radarSystem22_4.appl.proxy.SonarProxy;
 import it.unibo.radarSystem22_4.comm.ProtocolType;
@@ -29,7 +28,7 @@ public class UseSonarFromPc implements IApplication{
 		ColorsOut.outappl(" === " + getName() + " ===", ColorsOut.MAGENTA);
 		RadarSystemConfig.DLIMIT           = 80;
 		RadarSystemConfig.ctxServerPort    = 8756;
-		CommSystemConfig.protcolType = ProtocolType.udp;
+		CommSystemConfig.protcolType = ProtocolType.tcp;
 	}
 	
 	protected void configure() {		

@@ -209,10 +209,10 @@ div.imagedesc{
     <ul>
     <li>Il SonarObservable deve inviare informazioni a tutti componenti software interessati alla rilevazione dei valori di distanza;
     <li>Il SonarObservable deve fornire valori di distanza solo quando questi si modificano in modo significativo;
-    <li>I componenti interessati ai valori di distanza prodotti dal SonarObservable sono denominati Observer e possono risiedere sullo stesso nodo del SonarObservable (cioè sul RaspberryPi) o su un nodo remoto (ad esempio sul PC);
+    <li>I componenti interessati ai valori di distanza prodotti dal SonarObservable sono denominati Observer e possono risiedere sullo stesso nodo del SonarObservable (cio&egrave; sul RaspberryPi) o su un nodo remoto (ad esempio sul PC);
     <li>il funzionamento del SonarObservable deve essere testato in modo automatizzato ponendo un ostacolo 
         a distanza fissa <tt>DTESTING1</tt> davanti ad esso, controllando che tutti gli Observers ricevano 
-        il valore <tt>DTESTING1</tt>. Dopo un qualche tempo, si modifica la posizione dell’ostacolo 
+        il valore <tt>DTESTING1</tt>. Dopo un qualche tempo, si modifica la posizione dell'ostacolo 
         a una nuova distanza <tt>DTESTING2</tt> e si controlla che gli tutti gli Observers ricevano il valore <tt>DTESTING2.</tt>
     </li> 
 </div>
@@ -223,15 +223,19 @@ div.imagedesc{
 Il sistema richiede l'utilizzo di un componente SonarObservable, presente sul RaspberryPi, 
 il quale possa fornire a tutti i componenti software, detti Observer, 
 i valori di distanza rilevati dal dispositivo Sonar, quando questi si modificano in modo significativo. 
-L'invio dei dati può avvenire in remoto (da RaspberryPi verso un computer remoto) o localmente, cioè sul Raspberry stesso.
+L'invio dei dati pu&ograve; avvenire in remoto (da RaspberryPi verso un computer remoto) o localmente, cio&egrave; sul Raspberry stesso.
 </div>
 
 <h2>Problem analysis</h2>
 <div class="remark">
-<li><b>Modo 1</b> (modello Pull): il SonarObservable, dopo aver ottenuto il dato corrente, controlla che esso risulti significativo e lo manda agli Observer che lo richiedono.
-<li><b>Modo 2</b> (modello Push): il SonarObservable, dopo aver ottenuto il dato corrente, controlla che esso risulti significativo e lo manda a tutti gli Observable sottoforma di notifica. 
+<li><b>Modo 1</b>: utilizzo di una risorsa osservabile che conterr&agrave; il dato sulla misura corrente e di un processo che si occuper&agrave; di aggiornare tale dato.
+    Gli observer ottengono informazioni sulle misure effettuando una richiesta all'oggetto osservabile.
+<li><b>Modo 2</b>: utilizzo di una risorsa che, dopo aver inviato una richiesta al Sonar per conoscere il dato corrente, 
+    modifica il proprio stato interno e lo notifica a tutti gli observer.
 </li>
-E' preferibile il modo 1 in quanto gli Observer ottengono un valore solo quando lo richiedono.
+&Egrave; preferibile usare il modo 1 in quanto si ottiene una maggiore efficienza, dato che gli observer ottengono il dato solo quando lo richiedono. 
+ In un sistema di notifica del cambiamento dello stato, l'informazione viene inviata agli osservatori indistintamente, 
+ con la possibilit&agrave; che alcune operazioni di notifica risultino ridondanti. 
 </div>
 <h2>Test plans</h2> 
 

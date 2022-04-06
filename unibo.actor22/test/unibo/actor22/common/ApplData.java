@@ -17,6 +17,8 @@ public class ApplData {
 
 	public static final String cmdActivate  = "activate";
 	public static final String cmdDectivate = "deactivate";
+	public static final String reqSonarDistance = "getDistance";
+	public static final String reqSonarActive = "isActive";
 
 	public static final String evEndWork    = "endWork";
 

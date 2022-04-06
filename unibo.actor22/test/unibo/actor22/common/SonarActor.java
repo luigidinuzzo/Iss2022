@@ -47,7 +47,6 @@ public class SonarActor extends QakActor22 {
 
 	protected void elabRequest(IApplMessage msg) {
 		String msgReq = msg.msgContent();
-		// ColorsOut.out( getName() + " | elabRequest " + msgCmd, ColorsOut.CYAN);
 		switch (msgReq) {
 		case ApplData.reqSonarActive: {
 			boolean b = sonar.isActive();

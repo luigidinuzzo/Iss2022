@@ -1,8 +1,10 @@
 package it.unibo.radarSystem22_4.appl.counter;
 
+import it.unibo.radarSystem22_4.appl.RadarSystemConfig;
 import it.unibo.radarSystem22_4.comm.ApplMessage;
 import it.unibo.radarSystem22_4.comm.ProtocolType;
 import it.unibo.radarSystem22_4.comm.context.ContextMsgHandler;
+import it.unibo.radarSystem22_4.comm.context.TcpContextServer;
 import it.unibo.radarSystem22_4.comm.enablers.EnablerContext;
 import it.unibo.radarSystem22_4.comm.interfaces.IApplMessage;
 import it.unibo.radarSystem22_4.comm.interfaces.IContext;
@@ -13,12 +15,12 @@ import it.unibo.radarSystem22_4.comm.utils.BasicUtils;
  * Un oggetto contatore di nome 'counter' (classe CounterWithDelay) con valore iniziale 2 
  * esegue l'operazione dec rilasciando il controllo per un certo tempo.
  * Questo contatore viene reso capace di gestire messaggi da un CounterApplHandler che lo incapsula.
- * Due client inviano il comando (dispatch) dec a 'counter', che perï¿½ non va a 0
+ * Due client inviano il comando (dispatch) dec a 'counter', che però non va a 0
  * Il sistema attiva 4 thread (main, TcpContextSerer e due client)
  */
 public class SharedCounterExampleMain  {
 private int ctxServerPort   = 7070;
-private String delay        = "0"; //con delay = 0 funziona
+private String delay        = "100"; //con delay = 0 funziona
 private ProtocolType protocol;
 IApplMessage msgDec = new ApplMessage(
 	      "msg( dec, dispatch, main, counter, dec(DELAY), 1 )"
@@ -29,7 +31,7 @@ IApplMessage msgDec = new ApplMessage(
  		protocol = ProtocolType.tcp;
 		CounterWithDelay counter         = new CounterWithDelay("counter");
  		CounterApplHandler counterH      = new CounterApplHandler("counterH", counter);
- //		TcpContextServer contextServer   = new TcpContextServer("TcpContextServer",  ctxServerPort );
+// 		TcpContextServer contextServer   = new TcpContextServer("TcpContextServer",  ctxServerPort );
 		IContext  contextServer = new EnablerContext("ctx",""+ctxServerPort,protocol,
 	                 new ContextMsgHandler("ctxH"));		
  		contextServer.addComponent(counter.getName(),counterH);	

@@ -37,7 +37,7 @@ public class UseLedFromPc implements IApplication{
 		ProtocolType protocol = CommSystemConfig.protcolType;
 		String ctxport        = ""+RadarSystemConfig.ctxServerPort;
 		led    		          = new LedProxy("ledPxy", host, ctxport, protocol );
-		//WARNING: il LedProxy va chiuso con un casting perchï¿½ ILed non ha deactivate
+		//WARNING: il LedProxy va chiuso con un casting perchè ILed non ha deactivate
  	}
 	
 

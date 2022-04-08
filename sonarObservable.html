@@ -243,10 +243,16 @@ L'observable emette informazioni senza preoccuparsi che gli observer la recepisc
 
 <br>Optando per l'idea che il Sonar sia un processo che aggiorna il valore di una distanza, introduciamo il concetto di distanza misurata formalizzandolo con una interfaccia:
 <li>IDistanceMeasured: dice che una distanza misurata &egrave; una distanza IDistance il cui valore pu&ograve; essere modificato. Inoltre &egrave; anche un observable in quanto estende IObservable permettendo la registrazione/rimozione di Observer che implementano l'interfaccia IObserver.
+<br> 
+<br>
     <center><img src="img/IDistanceMeasured.png" width="60%"></img></center>
 <li>IObservable:
+<br>
+<br> 
     <center><img src="img/IObservable.png" width="60%"></img></center>
 <li>IObserver:
+<br>
+<br>  
     <center><img src="img/IObserver.png" width="60%"></img></center>
 
 </li>
@@ -259,16 +265,29 @@ L'observable emette informazioni senza preoccuparsi che gli observer la recepisc
 <h2>Project</h2> 
 <div class="remark">
     Il progetto consiste nel realizzare i seguenti componenti:
-    <li><b>DistanceMeasured</b>: implementa IDistanceMeasured utlizzando la classe java.util.Observable per le gestione degli Observer;
-    <li><b>SonarMockForObs</b>: specializza La classe astratta SonarModel realizzando un Sonar mock orientato alla osservabilità dei dati, in quanto produttore di valori di distanza misurata osservabile.
-    <li><b>SonarConcreteForObs</b>: specializza La classe astratta SonarModel realizzando un Sonar concreto orientato alla osservabilità dei dati, in quanto produttore di valori di distanza misurata osservabile.
+    <li><a class="reference internal" href="./it.unibo.radarSystem22.domain/src/it/unibo/radarSystem22/domain/DistanceMeasured.java"><span class="std std-ref"><b>DistanceMeasured</b></span></a>: implementa <a class="reference internal" href="./it.unibo.radarSystem22.domain/src/it/unibo/radarSystem22/domain/interfaces/IDistanceMeasured.java"><span class="std std-ref"><b>IDistanceMeasured</b></span></a> utlizzando la classe <tt>java.util.Observable</tt> per le gestione degli Observer. Realizza il concetto di distanza misurata osservabile;
+    <li><a class="reference internal" href="./it.unibo.radarSystem22.domain/src/it/unibo/radarSystem22/domain/mock/SonarMockForObs.java"><span class="std std-ref"><b>SonarMockForObs</b></span></a>: specializza la classe astratta <a class="reference internal" href="./it.unibo.radarSystem22.domain/src/it/unibo/radarSystem22/domain/models/SonarModel.java"><span class="std std-ref"><b>SonarModel</b></span></a> realizzando un Sonar mock orientato alla osservabilit&agrave; dei dati, in quanto produttore di valori di distanza misurata osservabile.
+    <li><a class="reference internal" href="./it.unibo.radarSystem22.domain/src/it/unibo/radarSystem22/domain/concrete/SonarConcreteForObs.java"><span class="std std-ref"><b>SonarConcreteForObs</b></span></a>: specializza La classe astratta <a class="reference internal" href="./it.unibo.radarSystem22.domain/src/it/unibo/radarSystem22/domain/models/SonarModel.java"><span class="std std-ref"><b>SonarModel</b></span></a> realizzando un Sonar concreto orientato alla osservabilit&agrave; dei dati, in quanto produttore di valori di distanza misurata osservabile.
     </li>
 </div>
 
 
 <h2>Testing</h2> 
- 
-
+<div class="remark">
+    Il testing sul <tt>SonarMockObservable</tt> viene impostato nel modo che segue:
+    <li>si regola il Sonar in modo che produca un valore costante definito in <tt>DomainSystemConfig.testingDistance</tt>
+    <li>si introduce (almeno) un observer che controlla che il dato osservato sia quello emesso
+    </li>
+    <br>
+    <center><img src="img/test1.png" width="60%"></img></center>
+    <br>
+    L'observer viene impostato in modo da controllare anche dati emessi da un sonar reale che opera con ostacolo fisso posto davanti ad esso, alla distanza prefissata.
+    <br>
+    <br>
+    <center><img src="img/test2.png" width="60%"></img></center>
+    <br>
+    Si noti che observer di questo tipo vengono di norma eseguiti all'interno del Thread dell'observable che sta operando per conto di un qualche client.
+</div>
 <h2>Deployment</h2> 
 
  

@@ -189,7 +189,7 @@ div.imagedesc{
     
 <head>
    
-<title>TemplateToFill</title></head>
+<title>Sonar Observable</title></head>
     
 <body>
 <div id="top">
@@ -210,7 +210,7 @@ div.imagedesc{
     <li>Il SonarObservable deve inviare informazioni a tutti componenti software interessati alla rilevazione dei valori di distanza;
     <li>Il SonarObservable deve fornire valori di distanza solo quando questi si modificano in modo significativo;
     <li>I componenti interessati ai valori di distanza prodotti dal SonarObservable sono denominati Observer e possono risiedere sullo stesso nodo del SonarObservable (cio&egrave; sul RaspberryPi) o su un nodo remoto (ad esempio sul PC);
-    <li>il funzionamento del SonarObservable deve essere testato in modo automatizzato ponendo un ostacolo 
+    <li>Il funzionamento del SonarObservable deve essere testato in modo automatizzato ponendo un ostacolo 
         a distanza fissa <tt>DTESTING1</tt> davanti ad esso, controllando che tutti gli Observers ricevano 
         il valore <tt>DTESTING1</tt>. Dopo un qualche tempo, si modifica la posizione dell'ostacolo 
         a una nuova distanza <tt>DTESTING2</tt> e si controlla che gli tutti gli Observers ricevano il valore <tt>DTESTING2.</tt>
@@ -233,14 +233,37 @@ L'invio dei dati pu&ograve; avvenire in remoto (da RaspberryPi verso un computer
 <li><b>Modo 2</b>: utilizzo di una risorsa che, dopo aver inviato una richiesta al Sonar per conoscere il dato corrente, 
     modifica il proprio stato interno e lo notifica a tutti gli observer.
 </li>
-&Egrave; preferibile usare il modo 1 in quanto si ottiene una maggiore efficienza, dato che gli observer ottengono il dato solo quando lo richiedono. 
- In un sistema di notifica del cambiamento dello stato, l'informazione viene inviata agli osservatori indistintamente, 
- con la possibilit&agrave; che alcune operazioni di notifica risultino ridondanti. 
+&Egrave; preferibile utilizzare il modo 1, cio&agrave; considerare la distanza misurata come oggetto osservabile e il 
+Sonar come un processo che aggiorna tale dato, in quanto &egrave; l'informazione che realmente ci interessa.
+Secondo il pattern observer un'entit&agrave; &egrave; osservabile se offre dei metodi per cui un observer possa 
+registrarsi presso di essa. Dunque l'observer (o un thread associato) chiama un metodo di update per conoscere eventuali aggiornamenti del dato.
+Una entit&agrave; osservabile se volesse notificare il suo stato interno dovrebbe recuperare tutti gli osservatori e mandare a tutti la notifica, ed &egrave; un processo dispendioso.
+Dal punto di vista concettuale la cosa da fare &egrave; che un observable debba essere osservato senza dover chiamare egli stesso gli observer.
+L'observable emette informazioni senza preoccuparsi che gli observer la recepiscano: l'informazione viene emessa in un ambiente comune, gli observer interessati la catturano.
+
+<br>Optando per l'idea che il Sonar sia un processo che aggiorna il valore di una distanza, introduciamo il concetto di distanza misurata formalizzandolo con una interfaccia:
+<li>IDistanceMeasured: dice che una distanza misurata &egrave; una distanza IDistance il cui valore pu&ograve; essere modificato. Inoltre &egrave; anche un observable in quanto estende IObservable permettendo la registrazione/rimozione di Observer che implementano l'interfaccia IObserver.
+    <center><img src="img/IDistanceMeasured.png" width="60%"></img></center>
+<li>IObservable:
+    <center><img src="img/IObservable.png" width="60%"></img></center>
+<li>IObserver:
+    <center><img src="img/IObserver.png" width="60%"></img></center>
+
+</li>
+
+
 </div>
 <h2>Test plans</h2> 
 
 
 <h2>Project</h2> 
+<div class="remark">
+    Il progetto consiste nel realizzare i seguenti componenti:
+    <li><b>DistanceMeasured</b>: implementa IDistanceMeasured utlizzando la classe java.util.Observable per le gestione degli Observer;
+    <li><b>SonarMockForObs</b>: specializza La classe astratta SonarModel realizzando un Sonar mock orientato alla osservabilità dei dati, in quanto produttore di valori di distanza misurata osservabile.
+    <li><b>SonarConcreteForObs</b>: specializza La classe astratta SonarModel realizzando un Sonar concreto orientato alla osservabilità dei dati, in quanto produttore di valori di distanza misurata osservabile.
+    </li>
+</div>
 
 
 <h2>Testing</h2> 
